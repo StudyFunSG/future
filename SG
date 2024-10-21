@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyFunSG | 新加坡“未来领袖”游学计划</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sg-red: #EF3340;
+            --sg-white: #FFFFFF;
+            --sg-pink: #FFC0CB;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sg-white);
+            text-align: center;
+        }
+
+        nav {
+            background: linear-gradient(to top, var(--sg-white), var(--sg-red));
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: var(--sg-white);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 0.5rem;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: var(--sg-red);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .thick-line {
+            height: 4px;
+            background-color: var(--sg-red);
+            margin: 2rem 0;
+        }
+
+        .thin-line {
+            height: 1px;
+            background-color: var(--sg-red);
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            color: var(--sg-red);
+            position: absolute;
+            left: 0;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            background-color: #FFF;
+            color: #EF3340;
+            border: none;
+            border-top: 3px solid #EF3340;
+            border-bottom: 1px solid #EF3340;
+        }
+
+        .schedule-table td {
+            border: none;
+            border-bottom: 1px solid #FFC0CB;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: 1px solid #EF3340;
+        }
+
+        .schedule-table th:first-child {
+            width: 3ch;
+        }
+
+        .schedule-table th:nth-child(2),
+        .schedule-table th:nth-child(3) {
+            width: 22ch;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+        }
+
+        .faq-item h3 {
+            color: var(--sg-red);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            margin: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: var(--sg-red);
+        }
+
+        .main-title {
+            color: var(--sg-red);
+            font-weight: bold;
+            text-align: center;
+            padding-top: 100px;
+            margin-bottom: 50px;
+            font-size: 2.5em; /* 增大字体大小 */
+        }
+
+        .highlight {
+            background-color: var(--sg-pink);
+            font-weight: bold;
+        }
+
+        .expandable {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin-bottom: 10px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .expandable-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .feature-theme {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin-bottom: 10px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li:before {
+            content: '';
+            color: var(--sg-red);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: var(--sg-red);
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .left-aligned {
+            text-align: left;
+            width: 80%;
+            margin: 0 auto;
+            padding-left: 10%;
+        }
+
+        .left-aligned p {
+            margin: 10px 0;
+        }
+
+        /* 新增样式 */
+        .centered-content {
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .highlight {
+            color: #EF3340;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #EF3340;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        /* 新增样式 */
+        .feature-box {
+            border: 2px solid #EF3340;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .feature-title {
+            color: #EF3340;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border: 2px solid #EF3340;
+            border-radius: 5px;
+        }
+        .faq-question {
+            background-color: #f9f9f9;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #EF3340;
+        }
+        .faq-answer {
+            padding: 15px;
+            border-top: 1px solid #EF3340;
+            display: none;
+        }
+        .faq-answer ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i>首页</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i>简介</a></li>
+            <li><a href="#details"><i class="fas fa-list-ul"></i>行程</a></li>
+            <li><a href="#features"><i class="fas fa-star"></i>特色</a></li>
+            <li><a href="#faq"><i class="fas fa-question-circle"></i>咨询</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i>联系</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="section">
+        <h1 class="main-title">新加坡未来领袖游学计划</h1>
+        <div class="thick-line"></div>
+        <p>培养未来领袖，体验文化与商业发展的完美结合</p>
+        <p>2周全方位沉浸式游学之旅，探索新加坡的多元文化、生态平衡与全球领先的商业创新，助力你成为未来的全球领袖！</p>
+        <div class="thin-line"></div>
+        <ul class="feature-list">
+            <div class="centered-content">
+                <p><span class="highlight">了解前沿商业趋势</span>：通过商业实地考察与研讨，学习全球商业创新模式，为未来的职业发展打下基础。</p>
+                <p><span class="highlight">拓展国际视野人脉</span>：与来自海内外的学生互动，建立拓展国际社交网络，未来建立自己的国际社交圈。</p>
+                <p><span class="highlight">跨文化沟通领导力</span>：体验新加坡的多民族文化，提升跨文化沟通领导力，适应全球化下未来职场需求。</p>
+            </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>项目简介 📚</h2>
+        <p><span class="highlight">新加坡未来领袖游学计划</span> 是一个专为中国高中生与大学生设计的两周深度学习项目，旨在帮助学生全面了解新加坡的多元文化和最前沿的商业发展趋势。本计划为未来领袖们提供亲身探索新加坡知名高校、参与商业模拟、企业实地考察等机会，帮助学生拓展国际视野，提升商业思维能力，建立高量的人脉网络。</p>
+        <div class="thin-line"></div>
+        <p>在这两周内，学生将：</p>
+        <ul>
+            <li>🏫 走访新加坡顶尖学府，深入了解全球领先的教育与科研环境</li>
+            <li>💼 参与商业模拟的活动，体验团队合作与战略决策的真实挑战</li>
+            <li>🏛️ 探索新加坡历史底蕴，体验多元文化交汇的独特魅力及融洽</li>
+            <li>🤝 获取宝贵的职业规划，与本地行业专家和成功企业家的对话</li>
+            <li>🌏 建立未来国际社交圈，开拓未来事业发展路径与海内外人脉</li>
+        </ul>
+        <div class="thin-line"></div>
+        <p>无论你是对科技、金融、创业还是文化感兴趣，这次游学计划将为你提供一个全方位的成长平台，助力你成为未来的全球领袖。</p>
+    </section>
+
+    <section id="details" class="section">
+        <h2>项目细节 📋</h2>
+        <div class="thin-line"></div>
+        <h3>具体行程安排</h3>
+        <div class="section-title" onclick="toggleContent('week1')">｜第一周｜ - 文化与教育的新探索</div>
+        <div id="week1" class="expandable-content">
+            <table class="schedule-table">
+                <thead>
+                <tr>
+                    <th style="width: 3ch;"> </th>
+                    <th style="width: 25ch;">活动安排</th>
+                    <th style="width: 25ch;">意义目标</th>
+                </tr>
+                <tr>
+                    <td>第01天</td>
+                    <td>上午：<span class="highlight">抵达新加坡</span>，欢迎仪式与项目介绍<br>下午：自由活动：探索酒店周边熟悉环境</td>
+                    <td>欢迎学生并为接下来的周做好准备，缓解时差，介绍行程及期待目标。</td>
+                </tr>
+                <tr>
+                    <td>第02天</td>
+                    <td>上午：文化之旅：滨海湾花园与鱼尾狮公园<br>下午：<span class="highlight">新加坡国立大学</span>，校园导览与交流会</td>
+                    <td>通过文化和历史的了解，初步感知新加坡的多元社会；参观新加坡顶尖高校，感受其教育环境，了解学术与科研机会。</td>
+                </tr>
+                <tr>
+                    <td>第03天</td>
+                    <td>上午：历史与文化：<span class="highlight">国家博物馆</span>历史文化区<br>下午：南洋理工大学讲座：全球化与领导力</td>
+                    <td>结合历史与现代科技的双重体验，理解新加坡在全球化与创新中的角色，学习前沿的商业趋势。</td>
+                </tr>
+                <tr>
+                    <td>第04天</td>
+                    <td>上午：<span class="highlight">创业孵化器</span>考察：了解创业生态系统<br>下午：团队合作与商业决策案例模拟活动 01</td>
+                    <td>学习新加坡的创业与创新环境，培养学生的企业家精神，激发创业想法和职业发展方向。</td>
+                </tr>
+                <tr>
+                    <td>第05天</td>
+                    <td>上午：艺术文化场：<span class="highlight">新加坡艺术科学博物馆</span><br>下午：团队合作与商业决策案例模拟活动 02</td>
+                    <td>在艺术与文化中寻找创意与灵感，进一步了解新加坡作为文化交融的枢纽。</td>
+                </tr>
+                <tr>
+                    <td>第06天</td>
+                    <td>上午：团队合作与商业决策案例模拟活动 03<br>下午：<span class="highlight">团队合作与商业决策案例模拟活动总结</span></td>
+                    <td>通过团队协作和商业决策模拟，培养学生的合作能力、沟通技巧和批判性思维能力，了解真实商业决策场景。</td>
+                </tr>
+                <tr>
+                    <td>第07天</td>
+                    <td>上午：回顾一周学习成果，分享心得与经验<br>下午：<span class="highlight">自由活动</span>：探索滨海湾金沙或乌节路</td>
+                    <td>总结一周的学习与实践，学生互相分享个人收获，提升归纳与表达能力，激励未来的目标与发展方向。</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section-title" onclick="toggleContent('week2')">｜第二周｜ - 商业实战与全球视野</div>
+        <div id="week2" class="expandable-content">
+            <table class="schedule-table">
+                <thead>
+                <tr>
+                    <th style="width: 3ch;"> </th>
+                    <th style="width: 25ch;">活动安排</th>
+                    <th style="width: 25ch;">意义目标</th>
+                </tr>
+                <tr>
+                    <td>第08天</td>
+                    <td>上午：参观<span class="highlight">本地金融机构</span>，了解金融市场运作与投资趋势<br>下午：职业发展研讨会 - 如何进入全球领先的企业与行业</td>
+                    <td>学习金融市场的基础知识，了解投资机会与市场运作；获取职业发展建议，了解不同领域的职业规划和技能需求。</td>
+                </tr>
+                <tr>
+                    <td>第09天</td>
+                    <td>上午：商业领导力工作坊：如何高效沟通与谈判技能训练<br>下午：<span class="highlight">企业家分享</span> - 聆听成功企业家职业经验与创业故事</td>
+                    <td>培养高效沟通与谈判技巧，帮助学生在未来职场中取得优势；聆听成功人士的故事，激励个人职业与创业的规划与实践。</td>
+                </tr>
+                <tr>
+                    <td>第10天</td>
+                    <td>上午：<span class="highlight">跨国科技与金融类公司</span>，了解国际化企业运作模式<br>下午：企业实战项目：团队合作完成商业任务且成果展示</td>
+                    <td>深入了解跨国公司，学习其管理模式与全球球扩展战略；通过实践项目锻炼学生的实际操作能力。</td>
+                </tr>
+                <tr>
+                    <td>第11天</td>
+                    <td>上午：新加坡城市规划与未来生活：<span class="highlight">国家城市规划展览馆</span><br>下午：企业实战项目：团队合作完成商业任务且成果展示</td>
+                    <td>了解新加坡的未来城市规划与可持续发展理念，结合文化与科技的力量探索未来生活；通过实践项目锻炼学生的成果展示，增强演讲与表达技巧。</td>
+                </tr>
+                <tr>
+                    <td>第12天</td>
+                    <td>上午：<span class="highlight">企业实战项目</span>：团队合作完成商业任务且成果展示<br>下午：自由活动参观圣淘沙岛，体验新加坡旅游规划设计</td>
+                    <td>通过实践项目锻炼学生的实际操作能力，并进行成果展示，增强演讲与表达技巧。在休闲中感受新加坡作为旅游胜地的魅力。</td>
+                </tr>
+                <tr>
+                    <td>第13天</td>
+                    <td>上午：游学总结：回顾两周的学习成果，分享心得与经验<br>下午：<span class="highlight">毕业典礼</span>与颁奖仪式，学生们分享收获与未来规划</td>
+                    <td>总结两周的学习与实践，学生互相分享个人收获，提升归纳与表达能力，激励未来的目标与发展方向。</td>
+                </tr>
+                <tr>
+                    <td>第14天</td>
+                    <td>上午：自由活动与购物：探索滨海湾金沙乌节路牛车水等<br>下午：返程，<span class="highlight">结束此次新加坡未来领袖游学计划</span>充实回家</td>
+                    <td>给学生留出时间自由探索，感受新加坡的时尚与购物文化，同时进行返程准备，结束这段难忘的学习旅程。</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <h2>新加坡特色 🇸🇬</h2>
+        <div class="thin-line"></div>
+        <div class="feature-divider"></div>
+        <div class="section-title" onclick="toggleFeature('multicultural')">｜多元文化融合｜多民族多宗教多文化和谐共存</div>
+        <div id="multicultural" class="feature-content">
+            <div class="feature-box">
+                <div class="feature-title">多元文化融合</div>
+                <p>新加坡是一个多元文化交汇的城市，被誉为<span class="highlight">"东西方的桥梁"</span>。在这里，你将体验中华、马来、印度、欧亚等多种文化的完美融合。</p>
+            <ul>
+                <li>🏮 <span class="highlight">牛车水（唐人街）</span>：探索新加坡华人文化的发源地，感受中式建筑和传统美食的魅力。</li>
+                <li>🕌 <span class="highlight">甘榜格南（Kampong Glam）</span>：感受马来文化的丰富历史，参观苏丹回教堂，体验地道的马来风味。</li>
+                <li>🛕 <span class="highlight">小印度（Little India）</span>：步入五彩缤纷的小印度街区，品味印度文化的独特风情与美食。</li>
+            </ul>
+            </div>
+        </div>
+        <div class="section-title" onclick="toggleFeature('gardencity')">｜花园城市规划｜城市绿化与可持续性发展理念</div>
+        <div id="gardencity" class="feature-content">
+            <div class="feature-box">
+                <div class="feature-title">花园城市规划</div>
+                <p>新加坡被誉为<span class="highlight">"花园城市"</span>，完美结合了现代都市与自然景观的和谐共生。</p>
+            <ul>
+                <li>🌳 <span class="highlight">滨海湾花园</span>：探索新加坡标志性的生态园区，感受"擎天树"与未来花园的创新设计。</li>
+                <li>🌿 <span class="highlight">东海岸公园</span>：在新加坡最大的海滨公园漫步，呼吸清新的空气，亲身感受新加坡人与大自然共处的和谐。</li>
+                <li>🍃 <span class="highlight">新加坡植物园</span>这座拥有160多年历史的热带植物园，是世界遗产之一，学生可以在这里学习如何平衡生态保护与城市发展。</li>
+            </ul>
+            </div>
+        </div>
+        <div class="section-title" onclick="toggleFeature('financialcenter')">｜经济创新中心｜全球创新金融科技和商业枢纽</div>
+        <div id="financialcenter" class="feature-content">
+            <div class="feature-box">
+                <div class="feature-title">经济创新中心</div>
+                <p>作为<span class="highlight">全球领先的金融中心</span>，新加坡以其开放、创新的金融环境吸引了众多跨国企业和投资者。</p>
+            <ul>
+                <li>🏙️ <span class="highlight">新加坡金融区</span>：走访新加坡的金融中心区，了解亚洲金融市场的运作机制，体验新加坡作为国际金融中心的核心地位。</li>
+                <li>💡 <span class="highlight">科技与创新企业</span>：参观科技园区或创新企业孵化器（如Block71），学习前沿科技金融，激发学生的金融科技创新思维。</li>
+                <li>📈 <span class="highlight">金融研讨会与实地考察</span>：与行业专家进行深入讨论，了解金融发展趋势与机遇，如金融科技、区块链、绿色金融等领域。</li>
+            </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section">
+        <h2>常见问题 (FAQ)</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 参加项目需要具备什么条件？</div>
+                <div class="faq-answer">
+                    <p>A: 我们欢迎18-25岁之间、对商业和国际交流有浓厚兴趣的高中生和大学生参加。良好的英语沟通能力是必要的，但不要求有商业背景。我们期待学生能够积极参与互动，并展示对文化学习与未来发展的热情。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 项目费用包含哪些内容？</div>
+                <div class="faq-answer">
+                    <p>A: 项目费用包括以下内容：</p>
+                    <ul>
+                        <li>学习课程与讲座</li>
+                        <li>住宿安排</li>
+                        <li>日常交通（如校内外交通、项目活动地点的接送）</li>
+                        <li>部分餐饮（如欢迎晚宴、文化体验中的特色餐饮）</li>
+                        <li>文化活动及景点参观</li>
+                    </ul>
+                    <p>注意：国际往返机票、个人支出及额外活动费用需自理。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 如何申请该项目？</div>
+                <div class="faq-answer">
+                    <p>A: 请添加我们联系方式以获得在线申请表。申请时需上传个人简历以及一份英文动机信，说明你对该项目的兴趣与期望。我们收到申请后，将进行审核并通过邮件联系您进行线上面试。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 该项目的语言要求是什么？</div>
+                <div class="faq-answer">
+                    <p>A: 项目的主要授课与交流语言为英语。我们要求参与学生具备基本的英语沟通能力，以确保顺利参与各类课程与讨论。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 项目结束后会获得什么证书？</div>
+                <div class="faq-answer">
+                    <p>A: 成功完成项目的学生将获得由 Study Fun SG 颁发的官方结业证书，证明其在新加坡完成了未来领袖游学计划的学习与实践课程。这将为你未来的学术或职业生涯增添全球化视野的优势。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 项目的日程安排是什么样的？</div>
+                <div class="faq-answer">
+                    <p>A: 项目为期两周，行程安排包括新加坡的文化体验、商业模拟活动、大学参观及商业领域的研讨会等丰富的学习活动。详细行程表将在报名确认后发送。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 住宿条件如何？</div>
+                <div class="faq-answer">
+                    <p>A: 我们提供舒适且安全的住宿，通常为新加坡市区内的学生公寓或合作酒店。住宿地点方便前往项目的各大活动场所，并配备基本的生活设施。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Q: 项目中是否有自由活动时间？</div>
+                <div class="faq-answer">
+                    <p>A: 是的，我们在日程中安排了一些自由活动时间，方便学生自行探索新加坡，体验当地生活和文化。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>联系我们</h2>
+        <div class="thin-line"></div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-weixin"></i>
+                <span>WeChat: Binny0104</span>
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>Email: qibin@u.nus.edu</span>
+            </div>
+        </div>
+        <p>如果您有任何疑问或需要更多信息，请随时通过以上方式与我们联系。我们的团队将竭诚为您服务，帮助您了解更多关于新加坡未来领袖游学计划的详情。</p>
+    </section>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+
+        function toggleFeature(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+
+        function toggleFAQ(element) {
+            var answer = element.nextElementSibling;
+            var allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // 关闭所有其他的回答
+            allAnswers.forEach(function(item) {
+                if (item !== answer && item.style.display === 'block') {
+                    item.style.display = 'none';
+                }
+            });
+
+            // 切换当前回答的显示状态
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+
+        // 页面加载时打开第一个问题的回答
+        window.onload = function() {
+            var firstQuestion = document.querySelector('.faq-question');
+            if (firstQuestion) {
+                toggleFAQ(firstQuestion);
+            }
+        }
+    </script>
+</body>
+</html>
